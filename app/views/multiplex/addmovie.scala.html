@@ -1,0 +1,17 @@
+@import dtos.MultiplexDto
+@(multiplexForm : Form[MultiplexDto])(implicit request: Http.Request, messages: play.i18n.Messages)
+@import helper._
+
+@common("Add Movie to Multiplex Screen"){
+@helper.form(action = routes.MultiplexController.saveMovieToMultiplex()) {
+<fieldset>
+  <legend>Add Movie to Multiplex Screen</legend>
+  @* CSRF TOKEN SUPPORT *@
+  @helper.CSRF.formField
+  @helper.inputText(multiplexForm("multiplexname"), Symbol("_label") -> "Mutiplex Name", Symbol("placeholder") -> "Mutiplex Name")
+  @helper.inputText(multiplexForm("screename"), Symbol("_label") -> "Screen Name", Symbol("placeholder") -> "Screen Name")
+  @helper.inputText(multiplexForm("moviename"), Symbol("_label") -> "Movie Name", Symbol("placeholder") -> "Movie Name")
+<input type="submit" value="SAVE" />
+</fieldset>
+}
+}

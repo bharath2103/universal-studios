@@ -1,0 +1,38 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# An example controller showing a sample home page
+GET     /                                           controllers.HomeController.index
+
+#----------------------------Movie Endpoints----------------------------#
+GET     /movie/list                                 controllers.MovieController.listAll
+GET     /movie/removemovie/:id                      controllers.MovieController.removeMovie(id:Integer)
+GET     /movie/create                               controllers.MovieController.create(request: Request)
+GET     /movie/edit                                 controllers.MovieController.editMovie(request: Request, movieId : Integer)
+POST    /movie/create                               controllers.MovieController.save(request: Request)
+
+
+#----------------------------Multiplex Endpoints----------------------------#
+GET     /multiplex/list                             controllers.MultiplexController.listAll
+GET     /multiplex/removemultiplex/:id              controllers.MultiplexController.removeMultiplex(id:Integer)
+GET     /multiplex/addmultiplex                     controllers.MultiplexController.addMultiplex(request: Request)
+POST    /multiplex/create                           controllers.MultiplexController.save(request: Request)
+GET     /multiplex/addmovietomultiplex              controllers.MultiplexController.addmovietomultiplex(request: Request)
+POST    /multiplex/addmovietomultiplex              controllers.MultiplexController.saveMovieToMultiplex(request: Request)
+GET     /multiplex/removemoviefrommultiplex         controllers.MultiplexController.removemoviefrommultiplex(request: Request)
+POST    /multiplex/removemoviefrommultiplex         controllers.MultiplexController.clearMovieToMultiplex(request: Request)
+
+
+#----------------------------Movie Rest Endpoints----------------------------#
+GET     /api/movie/list                             controllers.rest.MovieRestController.list
+GET     /api/movie/findbyid/:id                     controllers.rest.MovieRestController.findMovieById(id:Integer)
+
+
+#----------------------------Socket Endpoints----------------------------#
+GET     /sock                                       controllers.SocketController.index(request: Request)
+GET     /sock/chat                                  controllers.SocketController.socket
+GET     /sock/stream                                controllers.SocketController.akkaStreamsSocket
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file                               controllers.Assets.versioned(path="/public", file: Asset)

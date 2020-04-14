@@ -1,0 +1,33 @@
+@import dtos.MultiplexDto
+@(multiplexes : List[MultiplexDto])
+
+@main("Welcome to Play") {
+<h4><a href="@routes.MultiplexController.addMultiplex()">Add New Multiplex</a></h4>
+<h4><a href="@routes.MultiplexController.addmovietomultiplex()">Add Movie to Multiplex</a></h4>
+<h4><a href="@routes.MultiplexController.removemoviefrommultiplex()">Remove Movie from Multiplex</a></h4>
+<h2>Multiplex in Catalogue</h2>
+<table width="100%" border="1">
+    <thead>
+    <!-- <th>ID</th> -->
+    <th>MULTIPLEX NAME</th>
+    <th>ADDRESS</th>
+    <!-- <th>NUMBER OF SCREENS</th> -->
+    <th>SCREEN NAME</th>
+    <th>ON SCREEN</th>
+    <th>ACTION</th>
+    </thead>
+    <tbody>
+    @for(multiplex <- multiplexes) {
+    <tr>
+        <!-- <td>@multiplex.id</td> -->
+        <td>@multiplex.multiplexname</td>
+        <td>@multiplex.address</td>
+        <!-- <td>@multiplex.numberofscreens</td> -->
+        <td>@multiplex.screename</td>
+        <td>@multiplex.moviename</td>
+        <td><center><a href="http://localhost:9000/multiplex/removemultiplex/@multiplex.id">Delete</a></center></td>
+    </tr>
+    }
+    </tbody>
+</table>
+}

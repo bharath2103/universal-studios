@@ -1,0 +1,12 @@
+@import dtos.MovieDto
+@(movieForm : Form[MovieDto])
+@import helper._
+
+@common("Add Movie") {
+@helper.form(action = routes.MovieController.save()) {
+<fieldset>
+  <legend>Movie</legend>
+  <input type="submit" value="SAVE" />
+</fieldset>
+}
+}
